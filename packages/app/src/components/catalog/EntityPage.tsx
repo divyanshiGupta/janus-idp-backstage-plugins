@@ -56,6 +56,11 @@ import {
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
+import {
+  GithubIssuesPage,
+  GithubIssuesCard,
+} from '@backstage/plugin-github-issues';
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -165,6 +170,10 @@ const serviceEntityPage = (
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
+
+    <EntityLayout.Route path="github-issues" title="GitHub Issues">
+      <GithubIssuesPage />
+    </EntityLayout.Route>
   </EntityLayout>
 );
 
@@ -236,7 +245,10 @@ const apiPage = (
         <Grid item md={6}>
           <EntityAboutCard />
         </Grid>
-        <Grid item md={6} xs={12}>
+        <Grid item md={6}>
+          <GithubIssuesCard />
+        </Grid>
+        <Grid item md={8} xs={12}>
           <EntityCatalogGraphCard variant="gridItem" height={400} />
         </Grid>
         <Grid item md={4} xs={12}>
@@ -274,6 +286,9 @@ const userPage = (
         <Grid item xs={12} md={6}>
           <EntityOwnershipCard variant="gridItem" />
         </Grid>
+        <Grid item xs={12}>
+          <GithubIssuesCard />
+        </Grid>
       </Grid>
     </EntityLayout.Route>
   </EntityLayout>
@@ -292,6 +307,9 @@ const groupPage = (
         </Grid>
         <Grid item xs={12}>
           <EntityMembersListCard />
+        </Grid>
+        <Grid item xs={12}>
+          <GithubIssuesCard />
         </Grid>
       </Grid>
     </EntityLayout.Route>
